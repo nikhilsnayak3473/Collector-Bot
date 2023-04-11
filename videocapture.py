@@ -6,7 +6,7 @@ import threading
 class VideoCapture:
 
     def __init__(self, name):
-        self.cap = cv2.VideoCapture(name)
+        self.cap = cv2.VideoCapture(name, cv2.CAP_V4L2)
         self.q = queue.Queue()
         t = threading.Thread(target=self._reader)
         t.daemon = True
