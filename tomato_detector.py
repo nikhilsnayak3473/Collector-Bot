@@ -24,8 +24,7 @@ class TomatoDetector:
             d_img, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
         contours = sorted(contours, key=cv2.contourArea, reverse=True)[:1]
         for cnt in contours:
-            if(cv2.contourArea(cnt) > 100 and cv2.contourArea(cnt) < 306000):
+            if (cv2.contourArea(cnt) > 100 and cv2.contourArea(cnt) < 306000):
                 rect = cv2.minAreaRect(cnt)
                 pixels = rect[1][0]
-                distance = (self.width*self.focal)/pixels
-                return distance
+                return (self.width*self.focal)/pixels
